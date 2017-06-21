@@ -29,7 +29,7 @@
     "semi": [1, "always"],
     "no-trailing-spaces": 1,
     "eol-last": 2,
-    "no-unused-vars": 1,
+    "no-unused-vars": 0,
     "no-underscore-dangle": 0,
     "no-alert": 2,
     "no-lone-blocks": 0,
