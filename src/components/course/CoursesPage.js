@@ -3,30 +3,13 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import * as courseActions from "../../actions/courseAction";
+import CourseList from "./CourseList";
 
 class CoursesPage extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            course: {title: " "}
-        };
-
-        this.onTitleChange = this.onTitleChange.bind(this);
-        this.onClickSave = this.onClickSave.bind(this);
     }
 
-    onTitleChange(event) {
-        const course = this.state.course;
-        course.title = event.target.value;
-        this.setState({course: course});
-    }
-
-    onClickSave() {
-        // since we didn't define a mapDispatchToProps function, connect automatically adds a dispatch prop to the
-        // component.
-        this.props.actions.createCourse(this.state.course);
-    }
 
     courseRow(course, index) {
         return (
@@ -37,14 +20,11 @@ class CoursesPage extends React.Component {
     }
 
     render() {
+        const {courses} = this.props;
+
         return (
             <div>
-                <h1> Courses </h1>
-                {this.props.courses.map(this.courseRow)}
-                <h2> Add Course </h2>
-                <input type="text" onChange={this.onTitleChange} value={this.state.course.title} />
-
-                <input type="submit" value="Save" onClick={this.onClickSave} />
+                <CourseList courses={courses} />
             </div>
         );
     }
